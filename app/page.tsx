@@ -1,13 +1,18 @@
 "use client"
 
 import { useState } from "react"
+import dynamic from "next/dynamic"
 import Image from "next/image"
 import { HeartIcon } from "lucide-react"
 import { ValentineCard } from "@/components/valentine-card"
-import { FallingHearts } from "@/components/falling-hearts"
 import { YesResponse } from "@/components/yes-response"
 import { NoResponse } from "@/components/no-response"
 import { MusicPlayer } from "@/components/music-player"
+
+// Dynamically import FallingHearts to prevent SSR issues
+const FallingHearts = dynamic(() => import("@/components/falling-hearts").then(mod => ({ default: mod.FallingHearts })), {
+  ssr: false,
+})
 
 export default function ValentinePage() {
   const [response, setResponse] = useState<"yes" | "no" | null>(null)

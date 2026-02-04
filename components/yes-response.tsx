@@ -1,10 +1,15 @@
 "use client"
 
+import dynamic from "next/dynamic"
 import { HeartIcon, Sparkles, PartyPopper } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { FallingHearts } from "@/components/falling-hearts"
 import { MusicPlayer } from "@/components/music-player"
+
+// Dynamically import FallingHearts to prevent SSR issues
+const FallingHearts = dynamic(() => import("@/components/falling-hearts").then(mod => ({ default: mod.FallingHearts })), {
+  ssr: false,
+})
 
 interface YesResponseProps {
   onReset: () => void
