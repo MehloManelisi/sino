@@ -7,9 +7,13 @@ import { Card, CardContent } from "@/components/ui/card"
 import Image from "next/image"
 
 const cardBackgrounds = [
-  "/images/card-bg-1.jpg",
-  "/images/card-bg-2.jpg",
-  "/images/card-bg-3.jpg",
+  "/babe1.jpeg",
+  "/babe2.jpeg",
+  "/babe3.jpeg",
+  "/babe4.jpeg",
+  "/babe5.jpeg",
+  "/babe6.jpeg",
+  "/babe7.jpeg",
 ]
 
 interface ValentineCardProps {
@@ -25,7 +29,7 @@ export function ValentineCard({ onYes, onNo }: ValentineCardProps) {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentBgIndex((prev) => (prev + 1) % cardBackgrounds.length)
-    }, 4000)
+    }, 8000)
     return () => clearInterval(interval)
   }, [])
 
@@ -55,14 +59,14 @@ export function ValentineCard({ onYes, onNo }: ValentineCardProps) {
             src={bg || "/placeholder.svg"}
             alt="Romantic background"
             fill
-            className={`object-cover transition-opacity duration-1000 ${
+            className={`object-cover transition-opacity duration-3000 ease-in-out ${
               index === currentBgIndex ? "opacity-100" : "opacity-0"
             }`}
             priority={index === 0}
           />
         ))}
         {/* Overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/15 to-background/20" />
       </div>
       
       <CardContent className="relative z-10 flex flex-col items-center p-8 text-center md:p-12">
@@ -97,10 +101,10 @@ export function ValentineCard({ onYes, onNo }: ValentineCardProps) {
 
         {/* Romantic Message */}
         <p
-          className="mb-8 max-w-sm text-muted-foreground"
-          style={{ fontFamily: "var(--font-poppins)" }}
+          className="mb-8 max-w-sm text-black italic leading-relaxed"
+          style={{ fontFamily: "var(--font-playfair)", fontSize: "1.1rem", fontWeight: 500 }}
         >
-          Every moment with you is a treasure. You make my heart skip a beat and my soul sing with joy.
+          My beautiful Sino, even though we haven't met yet, I feel a connection that draws me to you. There's something about you that makes my heart skip a beat and fills my thoughts with sweet anticipation. You've captured my attention in the most enchanting way, and I find myself wondering about the beautiful person you are. You make me believe in the magic of possibilities.
         </p>
 
         {/* Buttons */}
@@ -108,7 +112,7 @@ export function ValentineCard({ onYes, onNo }: ValentineCardProps) {
           <Button
             onClick={onYes}
             size="lg"
-            className="group relative w-full overflow-hidden bg-primary px-10 py-6 text-lg font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:bg-primary/90 hover:shadow-lg sm:w-auto"
+            className="group relative w-full overflow-hidden bg-primary px-10 py-6 text-lg font-semibold text-black transition-all duration-300 hover:scale-105 hover:bg-primary/90 hover:shadow-lg sm:w-auto rounded-3xl"
           >
             <HeartIcon className="mr-2 h-5 w-5 fill-current transition-transform group-hover:scale-125" />
             Yes, I Will!
@@ -120,7 +124,7 @@ export function ValentineCard({ onYes, onNo }: ValentineCardProps) {
             onMouseEnter={handleNoHover}
             variant="outline"
             size="lg"
-            className="w-full border-2 border-muted-foreground/30 px-8 py-6 text-lg font-medium text-muted-foreground transition-all duration-300 hover:border-muted-foreground/50 hover:bg-secondary sm:w-auto bg-transparent"
+            className="w-full border-2 border-black px-8 py-6 text-lg font-medium text-black transition-all duration-300 hover:border-black/80 hover:bg-secondary sm:w-auto bg-transparent rounded-3xl"
             style={{
               transform: `scale(${noButtonSize})`,
               opacity: noButtonSize,
@@ -131,7 +135,7 @@ export function ValentineCard({ onYes, onNo }: ValentineCardProps) {
         </div>
 
         {noAttempts > 0 && noAttempts < 5 && (
-          <p className="mt-4 text-sm text-muted-foreground animate-in fade-in" style={{ fontFamily: "var(--font-poppins)" }}>
+          <p className="mt-4 text-sm text-black animate-in fade-in" style={{ fontFamily: "var(--font-poppins)" }}>
             Come on, just say yes! 
           </p>
         )}

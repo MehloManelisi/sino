@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { HeartIcon } from "lucide-react"
 import { ValentineCard } from "@/components/valentine-card"
 import { FallingHearts } from "@/components/falling-hearts"
@@ -22,11 +23,16 @@ export default function ValentinePage() {
   return (
     <main className="relative min-h-screen overflow-hidden">
       {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/roses-background.jpg')" }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background/80" />
+      <div className="absolute inset-0">
+        <Image
+          src="/rose2.jpg"
+          alt="Beautiful roses background"
+          fill
+          className="object-cover"
+          priority
+          quality={90}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/15 to-background/20" />
       </div>
 
       {/* Falling Hearts Animation */}
